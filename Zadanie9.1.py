@@ -1,11 +1,14 @@
 import requests
 import csv
 
+app = Flask(__name__)
+
 response = requests.get("https://api.nbp.pl/api/exchangerates/tables/C?format=json")
 data = response.json()
 
 rates = data[0]['rates']
-print(rates)
+currency_codes = [currency['code'] for currency in rates]
+print(currency_codes)
 
 with open('rates.csv', 'w', newline='') as csvfile:
     fieldnames = ['currency', 'code', 'bid', 'ask']

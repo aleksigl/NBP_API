@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Przelicznik walut</title>
+  </head>
+  <body>
+    <h1>Przelicznik walut</h1>
+    <form action="/currency_calculator" method="post">
+      <label for="currency">Wybierz walutę:</label>
+      <select name="currency" id="currency">
+        {% for currency in currencies %}
+            <option value="{{ currency['code'] }}" 
+            {% if currency['code'] == currency_code %} selected {% endif %}>
+            {{ currency['currency'] }} ({{ currency['code'] }})</option>
+        {% endfor %}</select><br />
+
+      <label for="amount">Wprowadź ilość: </label>
+      <input type="number" id="amount" name="amount" /><br />
+      <br />
+      <input type="submit" value="Przelicz" />
+    </form>
+    
+    {% if amount %}
+        <h3>Wartość w PLN:</h3>
+        <p>{{ amount }} {{ currency_code }} = {{ result }} PLN</p>
+    {% endif %}
+  </body>
+</html>
