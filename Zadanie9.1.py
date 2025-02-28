@@ -7,7 +7,6 @@ data = response.json()
 
 rates = data[0]['rates']
 currency_codes = [currency['code'] for currency in rates]
-print(currency_codes)
 
 with open('rates.csv', 'w', newline='') as csvfile:
     fieldnames = ['currency', 'code', 'bid', 'ask']

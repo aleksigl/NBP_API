@@ -9,7 +9,12 @@ def index():
     data = response.json()
 
     rates = data[0]['rates']
-    currencies = [{'currency': currency['currency'], 'code': currency['code'], 'bid': currency['bid']} for currency in rates]
+    currencies = [{
+        'currency': currency['currency'], 
+        'code': currency['code'], 
+        'bid': currency['bid']
+        } 
+        for currency in rates]
 
     if request.method == 'POST':
         selected_currency_code = request.form['currency']
