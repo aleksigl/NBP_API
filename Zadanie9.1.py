@@ -1,7 +1,6 @@
 import requests
 import csv
 
-app = Flask(__name__)
 
 response = requests.get("https://api.nbp.pl/api/exchangerates/tables/C?format=json")
 data = response.json()
