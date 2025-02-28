@@ -18,7 +18,7 @@ def index():
         selected_currency = next((currency for currency in currencies if currency['code'] == selected_currency_code), None)
 
         if selected_currency:
-            cost_in_pln = amount * selected_currency['bid']
+            cost_in_pln = '{:.2f}'.format(amount * selected_currency['bid'])
             return render_template('currency_calc.html', currencies=currencies, result=cost_in_pln, amount=amount, currency_code=selected_currency_code)
 
     return render_template('currency_calc.html', currencies=currencies)

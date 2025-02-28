@@ -3,9 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <title>Przelicznik walut</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            display: inline-block;
+            margin: 0;
+            font-size: 80px;
+            background-image: url("{{ url_for('static', filename='money.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+        
+        h2 {
+            margin: 0;
+            font-size: 40px;
+        }
+    </style>
   </head>
   <body>
     <h1>Przelicznik walut</h1>
+    <p></p>
     <form action="/currency_calculator" method="post">
       <label for="currency">Wybierz walutę:</label>
       <select name="currency" id="currency">
@@ -22,8 +48,8 @@
     </form>
     
     {% if amount %}
-        <h3>Wartość w PLN:</h3>
-        <p>{{ amount }} {{ currency_code }} = {{ result }} PLN</p>
+        <p>Wartość w PLN:</p>
+        <h2>{{ amount }} {{ currency_code }} = {{ result }} PLN</h2>
     {% endif %}
   </body>
 </html>
